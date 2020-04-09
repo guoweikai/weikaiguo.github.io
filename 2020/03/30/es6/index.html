@@ -7,15 +7,15 @@
   
   <title>es6 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="项目中应该区分哪些是同步函数哪些是异步函数promise1234567891011121314151617var p1 &#x3D; new Promise(function (resolve) &amp;#123;  setTimeout(function () &amp;#123;    resolve(1);  &amp;#125;, 1000);&amp;#125;)p1.then(function (val) &amp;#123;  v">
+  <meta name="description" content="promise1234567891011121314151617var p1 &#x3D; new Promise(function (resolve) &amp;#123;  setTimeout(function () &amp;#123;    resolve(1);  &amp;#125;, 1000);&amp;#125;)p1.then(function (val) &amp;#123;  var p3 &#x3D; new Promise(f">
 <meta property="og:type" content="article">
 <meta property="og:title" content="es6">
 <meta property="og:url" content="http://yoursite.com/2020/03/30/es6/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="项目中应该区分哪些是同步函数哪些是异步函数promise1234567891011121314151617var p1 &#x3D; new Promise(function (resolve) &amp;#123;  setTimeout(function () &amp;#123;    resolve(1);  &amp;#125;, 1000);&amp;#125;)p1.then(function (val) &amp;#123;  v">
+<meta property="og:description" content="promise1234567891011121314151617var p1 &#x3D; new Promise(function (resolve) &amp;#123;  setTimeout(function () &amp;#123;    resolve(1);  &amp;#125;, 1000);&amp;#125;)p1.then(function (val) &amp;#123;  var p3 &#x3D; new Promise(f">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-30T06:37:05.000Z">
-<meta property="article:modified_time" content="2020-04-09T08:17:50.291Z">
+<meta property="article:modified_time" content="2020-04-09T08:38:52.592Z">
 <meta property="article:author" content="GWM">
 <meta name="twitter:card" content="summary">
   
@@ -49,8 +49,6 @@
         <a id="main-nav-toggle" class="nav-icon"></a>
         
           <a class="main-nav-link" href="/">主页</a>
-        
-          <a class="main-nav-link" href="/diary">日志</a>
         
       </nav>
       <nav id="sub-nav">
@@ -88,7 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="项目中应该区分哪些是同步函数哪些是异步函数"><a href="#项目中应该区分哪些是同步函数哪些是异步函数" class="headerlink" title="项目中应该区分哪些是同步函数哪些是异步函数"></a>项目中应该区分哪些是同步函数哪些是异步函数</h2><h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    resolve(<span class="number">1</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> p3 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve(val + <span class="number">1</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> p3;</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(val);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+        <h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    resolve(<span class="number">1</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> p3 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve(val + <span class="number">1</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> p3;</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(val);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h3 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h3><h3 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h3><ul>
 <li><strong>项目中一定要区分哪些是异步函数哪些是功能函数</strong></li>
 <li><strong>功能函数的划分</strong></li>
@@ -99,7 +97,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/30/es6/" data-id="ck8si6mo60000ssvbd5du6po2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/30/es6/" data-id="ck8sihjfu00001gvbf8mv0psz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,8 +195,6 @@
     <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">主页</a>
-  
-    <a href="/diary" class="mobile-nav-link">日志</a>
   
 </nav>
     
