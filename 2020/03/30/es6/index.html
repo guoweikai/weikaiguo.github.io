@@ -5,15 +5,17 @@
   
 
   
-  <title>about | 个人博客</title>
+  <title>es6 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+  <meta name="description" content="项目中应该区分哪些是同步函数哪些是异步函数promisepromise 是 var p1 &#x3D; new Promise(function (resolve) {  setTimeout(function () {    resolve(1);  }, 1000);}) p1.then(function (val) {  var p3 &#x3D; new Promise(function (resolve)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6">
+<meta property="og:url" content="http://yoursite.com/2020/03/30/es6/index.html">
 <meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="项目中应该区分哪些是同步函数哪些是异步函数promisepromise 是 var p1 &#x3D; new Promise(function (resolve) {  setTimeout(function () {    resolve(1);  }, 1000);}) p1.then(function (val) {  var p3 &#x3D; new Promise(function (resolve)">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-30T08:41:59.000Z">
-<meta property="article:modified_time" content="2020-03-30T08:41:59.163Z">
+<meta property="article:published_time" content="2020-03-30T06:37:05.000Z">
+<meta property="article:modified_time" content="2020-04-03T01:44:34.909Z">
 <meta property="article:author" content="GWM">
 <meta name="twitter:card" content="summary">
   
@@ -64,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-es6" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/about/index.html" class="article-date">
-  <time datetime="2020-03-30T08:41:59.000Z" itemprop="datePublished">2020-03-30</time>
+    <a href="/2020/03/30/es6/" class="article-date">
+  <time datetime="2020-03-30T06:37:05.000Z" itemprop="datePublished">2020-03-30</time>
 </a>
     
   </div>
@@ -78,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      about
+      es6
     </h1>
   
 
@@ -86,17 +88,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="项目中应该区分哪些是同步函数哪些是异步函数"><a href="#项目中应该区分哪些是同步函数哪些是异步函数" class="headerlink" title="项目中应该区分哪些是同步函数哪些是异步函数"></a>项目中应该区分哪些是同步函数哪些是异步函数</h2><h1 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h1><p>promise 是</p>
+<p>var p1 = new Promise(function (resolve) {<br>  setTimeout(function () {<br>    resolve(1);<br>  }, 1000);<br>})</p>
+<p>p1.then(function (val) {<br>  var p3 = new Promise(function (resolve) {<br>    setTimeout(function () {<br>      resolve(val + 1);<br>    }, 1000);<br>  });</p>
+<p>  return p3;<br>}).then(function (val) {<br>  console.log(val);<br>});</p>
+<h1 id="Iterator-的概念"><a href="#Iterator-的概念" class="headerlink" title="Iterator 的概念"></a>Iterator 的概念</h1><h1 id="区分同步函数和异步函数"><a href="#区分同步函数和异步函数" class="headerlink" title="区分同步函数和异步函数"></a>区分同步函数和异步函数</h1><h1 id="功能行函数拆分"><a href="#功能行函数拆分" class="headerlink" title="功能行函数拆分"></a>功能行函数拆分</h1>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/about/index.html" data-id="ck8sdp0xe0004ngvbca6we8hd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/30/es6/" data-id="ck8sdp0wq0000ngvb2l0z1gjx" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2020/03/30/vue%E7%9B%B8%E5%85%B3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vue相关
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/30/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">英语学习</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
