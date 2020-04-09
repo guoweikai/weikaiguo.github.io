@@ -64,6 +64,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="[layout]-设计模式" class="article article-type-[layout]" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2020-04-09T06:32:16.000Z" itemprop="datePublished">2020-04-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li><strong>创建型:</strong>  <font color="red"> <strong>工厂模式 单例模式</strong></font></li>
+<li><strong>结构性:</strong>  <font color="red"> <strong>适配器 装饰器 代理 外观</strong></font></li>
+</ul>
+<h2 id="observer-观察者模式"><a href="#observer-观察者模式" class="headerlink" title="observer [观察者模式]"></a>observer [观察者模式]</h2><p><font color="red" >根据状态的变化主动触发观察者队里,hashMap的回调行为一个简单的观察者模式代码实践</font></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 状态跟踪器</span></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">StateTracker</span> </span>&#123;</span><br><span class="line">   <span class="keyword">constructor</span>()&#123;</span><br><span class="line">     <span class="keyword">this</span>.observers  =[];</span><br><span class="line">     <span class="keyword">this</span>.internalState =<span class="number">10</span>;</span><br><span class="line">   &#125;  </span><br><span class="line">  <span class="comment">//  改变内部状态,触发状态的观察者列表</span></span><br><span class="line">  change(val)&#123;</span><br><span class="line">    <span class="keyword">this</span>.internalState = val;</span><br><span class="line">    <span class="keyword">this</span>.observers.forEach(<span class="function"><span class="params">observer</span>=&gt;</span>observer(val))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 注册观察者</span></span><br><span class="line">  registerObserver(ObserverFn)&#123;</span><br><span class="line">     <span class="keyword">this</span>.obserers.push(ObserverFn)</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="observer-观察者模式2"><a href="#observer-观察者模式2" class="headerlink" title="observer [观察者模式2]"></a>observer [观察者模式2]</h2><ul>
+<li>观察者 [Observer]</li>
+<li>监听队里 [observers]</li>
+<li>订阅者 [watcher]</li>
+</ul>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p><font color="red"> 通常称为 发布-订阅者模式或消息模式,它定义了对象间的一种一对多的依赖关系,只要当一个对象的状态发生改变时,所有依赖于它的对象都得到通知并自动更新,解决了主体对象与观察者之间功能的耦合,即一个对象状态改变给其他对象通知的问题</font></p>
+<h3 id="创建观察者"><a href="#创建观察者" class="headerlink" title="创建观察者"></a>创建观察者</h3><ul>
+<li>方法容器</li>
+<li>订阅消息方法 [on]</li>
+<li>取消订阅消息方法 [off]</li>
+<li>发送订阅消息 [subscribe]</li>
+</ul>
+<p>内容来源于 <a href="https://zhuanlan.zhihu.com/p/24980136" target="_blank" rel="noopener">链接</a><br>内容来源于2 <a href="https://juejin.im/post/5c984610e51d45656702a785" target="_blank" rel="noopener">链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" data-id="ck8shw5or00053wvb8n1haw5w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-npm" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/03/npm/" class="article-date">
@@ -78,7 +133,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/03/npm/">Hello World</a>
+      <a class="article-title" href="/2020/04/03/npm/">npm</a>
     </h1>
   
 
@@ -90,7 +145,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/03/npm/" data-id="ck8sdrpbm0004kcvbdr24el2m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/03/npm/" data-id="ck8shw5om00043wvb5hzact9v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -100,9 +155,9 @@
 
 
   
-    <article id="photo-vue相关" class="article article-type-photo" itemscope itemprop="blogPost">
+    <article id="photo-vue" class="article article-type-photo" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/30/vue%E7%9B%B8%E5%85%B3/" class="article-date">
+    <a href="/2020/03/30/vue/" class="article-date">
   <time datetime="2020-03-30T07:46:15.000Z" itemprop="datePublished">2020-03-30</time>
 </a>
     
@@ -114,7 +169,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/30/vue%E7%9B%B8%E5%85%B3/">vue相关</a>
+      <a class="article-title" href="/2020/03/30/vue/">vue</a>
     </h1>
   
 
@@ -126,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/30/vue%E7%9B%B8%E5%85%B3/" data-id="ck8sdrpbh0001kcvb3rsket4z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/30/vue/" data-id="ck8shw5ok00023wvbf57hax2f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -158,15 +213,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="项目中应该区分哪些是同步函数哪些是异步函数"><a href="#项目中应该区分哪些是同步函数哪些是异步函数" class="headerlink" title="项目中应该区分哪些是同步函数哪些是异步函数"></a>项目中应该区分哪些是同步函数哪些是异步函数</h2><h1 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h1><p>promise 是</p>
-<p>var p1 = new Promise(function (resolve) {<br>  setTimeout(function () {<br>    resolve(1);<br>  }, 1000);<br>})</p>
-<p>p1.then(function (val) {<br>  var p3 = new Promise(function (resolve) {<br>    setTimeout(function () {<br>      resolve(val + 1);<br>    }, 1000);<br>  });</p>
-<p>  return p3;<br>}).then(function (val) {<br>  console.log(val);<br>});</p>
-<h1 id="Iterator-的概念"><a href="#Iterator-的概念" class="headerlink" title="Iterator 的概念"></a>Iterator 的概念</h1><h1 id="区分同步函数和异步函数"><a href="#区分同步函数和异步函数" class="headerlink" title="区分同步函数和异步函数"></a>区分同步函数和异步函数</h1><h1 id="功能行函数拆分"><a href="#功能行函数拆分" class="headerlink" title="功能行函数拆分"></a>功能行函数拆分</h1>
+        <h2 id="项目中应该区分哪些是同步函数哪些是异步函数"><a href="#项目中应该区分哪些是同步函数哪些是异步函数" class="headerlink" title="项目中应该区分哪些是同步函数哪些是异步函数"></a>项目中应该区分哪些是同步函数哪些是异步函数</h2><h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    resolve(<span class="number">1</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> p3 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve(val + <span class="number">1</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> p3;</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(val);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h3><h3 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h3><ul>
+<li><strong>项目中一定要区分哪些是异步函数哪些是功能函数</strong></li>
+<li><strong>功能函数的划分</strong></li>
+<li><strong>函数的返回值</strong></li>
+<li><strong>类和函数的区别</strong></li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/30/es6/" data-id="ck8sdrpbc0000kcvb3seo7jul" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/30/es6/" data-id="ck8shw5oe00003wvbcdf2gpfr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -176,9 +234,9 @@
 
 
   
-    <article id="post-英语学习" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-英语" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/30/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/" class="article-date">
+    <a href="/2020/03/30/%E8%8B%B1%E8%AF%AD/" class="article-date">
   <time datetime="2020-03-30T06:37:05.000Z" itemprop="datePublished">2020-03-30</time>
 </a>
     
@@ -190,7 +248,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/30/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/">英语学习</a>
+      <a class="article-title" href="/2020/03/30/%E8%8B%B1%E8%AF%AD/">英语</a>
     </h1>
   
 
@@ -240,56 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/30/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/" data-id="ck8sdrpbl0003kcvbhr994tja" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/30/hello-world/" class="article-date">
-  <time datetime="2020-03-30T05:54:35.403Z" itemprop="datePublished">2020-03-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/30/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/30/hello-world/" data-id="ck8sdrpbk0002kcvbf88tfxvv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/30/%E8%8B%B1%E8%AF%AD/" data-id="ck8shw5ol00033wvb6eshf706" class="article-share-link">Share</a>
       
       
     </footer>
@@ -330,11 +339,15 @@
       <ul>
         
           <li>
-            <a href="/2020/04/03/npm/">Hello World</a>
+            <a href="/2020/04/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
           </li>
         
           <li>
-            <a href="/2020/03/30/vue%E7%9B%B8%E5%85%B3/">vue相关</a>
+            <a href="/2020/04/03/npm/">npm</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/30/vue/">vue</a>
           </li>
         
           <li>
@@ -342,11 +355,7 @@
           </li>
         
           <li>
-            <a href="/2020/03/30/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/">英语学习</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/30/hello-world/">Hello World</a>
+            <a href="/2020/03/30/%E8%8B%B1%E8%AF%AD/">英语</a>
           </li>
         
       </ul>

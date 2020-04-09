@@ -7,15 +7,15 @@
   
   <title>es6 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="项目中应该区分哪些是同步函数哪些是异步函数promisepromise 是 var p1 &#x3D; new Promise(function (resolve) {  setTimeout(function () {    resolve(1);  }, 1000);}) p1.then(function (val) {  var p3 &#x3D; new Promise(function (resolve)">
+  <meta name="description" content="项目中应该区分哪些是同步函数哪些是异步函数promise1234567891011121314151617var p1 &#x3D; new Promise(function (resolve) &amp;#123;  setTimeout(function () &amp;#123;    resolve(1);  &amp;#125;, 1000);&amp;#125;)p1.then(function (val) &amp;#123;  v">
 <meta property="og:type" content="article">
 <meta property="og:title" content="es6">
 <meta property="og:url" content="http://yoursite.com/2020/03/30/es6/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="项目中应该区分哪些是同步函数哪些是异步函数promisepromise 是 var p1 &#x3D; new Promise(function (resolve) {  setTimeout(function () {    resolve(1);  }, 1000);}) p1.then(function (val) {  var p3 &#x3D; new Promise(function (resolve)">
+<meta property="og:description" content="项目中应该区分哪些是同步函数哪些是异步函数promise1234567891011121314151617var p1 &#x3D; new Promise(function (resolve) &amp;#123;  setTimeout(function () &amp;#123;    resolve(1);  &amp;#125;, 1000);&amp;#125;)p1.then(function (val) &amp;#123;  v">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-30T06:37:05.000Z">
-<meta property="article:modified_time" content="2020-04-03T01:44:34.909Z">
+<meta property="article:modified_time" content="2020-04-09T08:17:50.291Z">
 <meta property="article:author" content="GWM">
 <meta name="twitter:card" content="summary">
   
@@ -88,15 +88,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="项目中应该区分哪些是同步函数哪些是异步函数"><a href="#项目中应该区分哪些是同步函数哪些是异步函数" class="headerlink" title="项目中应该区分哪些是同步函数哪些是异步函数"></a>项目中应该区分哪些是同步函数哪些是异步函数</h2><h1 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h1><p>promise 是</p>
-<p>var p1 = new Promise(function (resolve) {<br>  setTimeout(function () {<br>    resolve(1);<br>  }, 1000);<br>})</p>
-<p>p1.then(function (val) {<br>  var p3 = new Promise(function (resolve) {<br>    setTimeout(function () {<br>      resolve(val + 1);<br>    }, 1000);<br>  });</p>
-<p>  return p3;<br>}).then(function (val) {<br>  console.log(val);<br>});</p>
-<h1 id="Iterator-的概念"><a href="#Iterator-的概念" class="headerlink" title="Iterator 的概念"></a>Iterator 的概念</h1><h1 id="区分同步函数和异步函数"><a href="#区分同步函数和异步函数" class="headerlink" title="区分同步函数和异步函数"></a>区分同步函数和异步函数</h1><h1 id="功能行函数拆分"><a href="#功能行函数拆分" class="headerlink" title="功能行函数拆分"></a>功能行函数拆分</h1>
+        <h2 id="项目中应该区分哪些是同步函数哪些是异步函数"><a href="#项目中应该区分哪些是同步函数哪些是异步函数" class="headerlink" title="项目中应该区分哪些是同步函数哪些是异步函数"></a>项目中应该区分哪些是同步函数哪些是异步函数</h2><h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    resolve(<span class="number">1</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> p3 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve(val + <span class="number">1</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> p3;</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(val);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h3><h3 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h3><ul>
+<li><strong>项目中一定要区分哪些是异步函数哪些是功能函数</strong></li>
+<li><strong>功能函数的划分</strong></li>
+<li><strong>函数的返回值</strong></li>
+<li><strong>类和函数的区别</strong></li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/30/es6/" data-id="ck8sdrpbc0000kcvb3seo7jul" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/30/es6/" data-id="ck8shw5oe00003wvbcdf2gpfr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -105,19 +108,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/03/30/vue%E7%9B%B8%E5%85%B3/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/30/vue/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          vue相关
+          vue
         
       </div>
     </a>
   
   
-    <a href="/2020/03/30/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/03/30/%E8%8B%B1%E8%AF%AD/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">英语学习</div>
+      <div class="article-nav-title">英语</div>
     </a>
   
 </nav>
@@ -154,11 +157,15 @@
       <ul>
         
           <li>
-            <a href="/2020/04/03/npm/">Hello World</a>
+            <a href="/2020/04/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
           </li>
         
           <li>
-            <a href="/2020/03/30/vue%E7%9B%B8%E5%85%B3/">vue相关</a>
+            <a href="/2020/04/03/npm/">npm</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/30/vue/">vue</a>
           </li>
         
           <li>
@@ -166,11 +173,7 @@
           </li>
         
           <li>
-            <a href="/2020/03/30/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/">英语学习</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/30/hello-world/">Hello World</a>
+            <a href="/2020/03/30/%E8%8B%B1%E8%AF%AD/">英语</a>
           </li>
         
       </ul>

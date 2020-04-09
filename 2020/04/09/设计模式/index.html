@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>设计模式 | 个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="分类 创建型:   工厂模式 单例模式 结构性:   适配器 装饰器 代理 外观  observer [观察者模式]根据状态的变化主动触发观察者队里,hashMap的回调行为一个简单的观察者模式代码实践 12345678910111213141516&#x2F;&#x2F; 状态跟踪器 class StateTracker &amp;#123;   constructor()&amp;#123;     this.observers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="http://yoursite.com/2020/04/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="分类 创建型:   工厂模式 单例模式 结构性:   适配器 装饰器 代理 外观  observer [观察者模式]根据状态的变化主动触发观察者队里,hashMap的回调行为一个简单的观察者模式代码实践 12345678910111213141516&#x2F;&#x2F; 状态跟踪器 class StateTracker &amp;#123;   constructor()&amp;#123;     this.observers">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-09T06:32:16.000Z">
+<meta property="article:modified_time" content="2020-04-09T08:23:11.490Z">
+<meta property="article:author" content="GWM">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">个人博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/diary">日志</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="[layout]-设计模式" class="article article-type-[layout]" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2020-04-09T06:32:16.000Z" itemprop="datePublished">2020-04-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      设计模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li><strong>创建型:</strong>  <font color="red"> <strong>工厂模式 单例模式</strong></font></li>
+<li><strong>结构性:</strong>  <font color="red"> <strong>适配器 装饰器 代理 外观</strong></font></li>
+</ul>
+<h2 id="observer-观察者模式"><a href="#observer-观察者模式" class="headerlink" title="observer [观察者模式]"></a>observer [观察者模式]</h2><p><font color="red" >根据状态的变化主动触发观察者队里,hashMap的回调行为一个简单的观察者模式代码实践</font></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 状态跟踪器</span></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">StateTracker</span> </span>&#123;</span><br><span class="line">   <span class="keyword">constructor</span>()&#123;</span><br><span class="line">     <span class="keyword">this</span>.observers  =[];</span><br><span class="line">     <span class="keyword">this</span>.internalState =<span class="number">10</span>;</span><br><span class="line">   &#125;  </span><br><span class="line">  <span class="comment">//  改变内部状态,触发状态的观察者列表</span></span><br><span class="line">  change(val)&#123;</span><br><span class="line">    <span class="keyword">this</span>.internalState = val;</span><br><span class="line">    <span class="keyword">this</span>.observers.forEach(<span class="function"><span class="params">observer</span>=&gt;</span>observer(val))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 注册观察者</span></span><br><span class="line">  registerObserver(ObserverFn)&#123;</span><br><span class="line">     <span class="keyword">this</span>.obserers.push(ObserverFn)</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="observer-观察者模式2"><a href="#observer-观察者模式2" class="headerlink" title="observer [观察者模式2]"></a>observer [观察者模式2]</h2><ul>
+<li>观察者 [Observer]</li>
+<li>监听队里 [observers]</li>
+<li>订阅者 [watcher]</li>
+</ul>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p><font color="red"> 通常称为 发布-订阅者模式或消息模式,它定义了对象间的一种一对多的依赖关系,只要当一个对象的状态发生改变时,所有依赖于它的对象都得到通知并自动更新,解决了主体对象与观察者之间功能的耦合,即一个对象状态改变给其他对象通知的问题</font></p>
+<h3 id="创建观察者"><a href="#创建观察者" class="headerlink" title="创建观察者"></a>创建观察者</h3><ul>
+<li>方法容器</li>
+<li>订阅消息方法 [on]</li>
+<li>取消订阅消息方法 [off]</li>
+<li>发送订阅消息 [subscribe]</li>
+</ul>
+<p>内容来源于 <a href="https://zhuanlan.zhihu.com/p/24980136" target="_blank" rel="noopener">链接</a><br>内容来源于2 <a href="https://juejin.im/post/5c984610e51d45656702a785" target="_blank" rel="noopener">链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" data-id="ck8shw5or00053wvb8n1haw5w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/03/npm/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">npm</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/03/npm/">npm</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/30/vue/">vue</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/30/es6/">es6</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/30/%E8%8B%B1%E8%AF%AD/">英语</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 GWM<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/diary" class="mobile-nav-link">日志</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
